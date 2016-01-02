@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.3 (452849)"/><meta name="author" content="Alan Chen"/><meta name="created" content="2016-01-02 07:09:12 +0000"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2016-01-02 08:10:49 +0000"/><title>index</title></head><body>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">2015/12/29 Google深度學習實作 by Dr.邱中鎮(Chung-Cheng Chiu) @中研院</span></span></div>
+<div>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></div>
+<div><span style="font-size: 24px;"><b><span style="font-family: 微軟正黑體;">What’s deep learning</span></b></span></div>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">A powerful class of machine learning</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">modern reinforcement of artificial NN</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">collection of simple, trainable mathematical functions</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">loosely based on knowledge that we know about brain</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">each neuron is connected to some neurons in a priori layer</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">each neuron is y = g( wx + b ) and working together</span></span></li>
+</ul>
+</div>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></div>
+<div><span style="font-size: 24px;"><b><font face="微軟正黑體">Artificial Neural Network 簡介</font></b></span></div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">A simple neuron</span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">x[0,1], x[0,2], x[0,3] are parameter to learn</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">very efficient to compute</span></span></li>
+</ul>
+</li>
+</ul>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Add nonlinearity</span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">使用rectified linear unit (ReLU)作為activation function</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">nonlinearity allows us to add more layer</span></span></li>
+</ul>
+</li>
+</ul>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Learn parameter</span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">minimize difference between target and output value with respect to x</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">learn x<br/>
+x = argmin[x]Diff(target, output)</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">the difference is loss function</span></span></li>
+</ul>
+</li>
+</ul>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Optimization </span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">use gradient descent to minize loss function</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">calculate gradients of x</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">chain rule</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">使用backpropagation<br/></span></span><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></li>
+</ul>
+</li>
+</ul>
+<div>
+<div><b><span style="font-size: 24px;"><span style="font-family: 微軟正黑體;">Trade-off between model and data</span></span></b></div>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">大量的data是關鍵</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">simple model with huge data 成效優於 fancy model with little data</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">QA：</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Q：當資料少時，用Bayesian Program Learning產生額外的學習案例，是否對learing有幫助？</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">A：透過BPL產生的資料，比較適合用machine learning進行學習，不適合用Deep learning</span></span></li>
+</ul>
+</li>
+</ul>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></div>
+<div><span style="font-size: 24px;"><b><span style="font-family: 微軟正黑體;">Experiment turnaround time and research productivity</span></b></span></div>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Minutes, hours</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">1-4 day: tolerable</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">interactivity replaced by running many experiments in parallel</span></span></li>
+</ul>
+</li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">1-4 weeks: progress stalls</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">high value experiments only</span></span></li>
+</ul>
+</li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">longer than 1 month: don't try it</span></span></li>
+</ul>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></div>
+<div><span style="font-size: 24px;"><b><span style="font-family: 微軟正黑體;">Transition</span></b></span></div>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">model parallelism</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">data parallelism</span></span></li>
+</ul>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></div>
+<div><b><span style="font-size: 24px;"><span style="font-family: 微軟正黑體;">Model parallelism</span></span></b></div>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">reduce step training time</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">many models have lots of inherent parallelism</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">對model要有insight才能切割的好以避免額外communication</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">類型</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Single core: Single Instruction Multiple Data</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Across cores: </span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Thread parallelism，用現成設訂好的</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Almost free, unless across sockets, in which case inter-socket bandwidth matters</span></span></li>
+</ul>
+</li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Across devices: for GPUs, often limited by PCIe bandwidth</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Across machines: limited by network bandwidth / latency</span></span></li>
+</ul>
+</li>
+</ul>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></div>
+<div><span style="font-size: 24px;"><b><span style="font-family: 微軟正黑體;">Data parallelism</span></b></span></div>
+<div style="text-align: center"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><img src="index.resources/D6D07672-E7C2-4998-A1D1-E2C9E5680687.png" height="207" width="381"/></span></span></div>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">use multiple model replicas to process different examples at the same time</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">all collaboration to update model state in shared parameter</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">speed up depends on kind of model, dense model or sparse model</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Asynchronous Data parallelism</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">distributed SGD</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Pros: relatively fault tolerant</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Cons: gradient staleness, which means each gradient less effective<br/>
+(由於每個model worker都在同步進行SGD，因此gradient品質變差)</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">適合用於sparse model</span></span></li>
+</ul>
+</li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Synchronous Data parallelism</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">N replicas equivalent to N times larger batch size</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Pros: No gradient staleness</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Cons: less fault tolerant</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">適合用於dense model</span></span></li>
+</ul>
+</li>
+</ul>
+<div><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;"><br/></span></span></div>
+<div><span style="font-size: 24px;"><b><span style="font-family: 微軟正黑體;">目前應用deep learning技術之項目</span></b></span></div>
+</div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">1. Object recognition in images</span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Google: Inception-v3</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">toturials: <a href="https://www.tensorflow.org/versions/master/tutorials/image_recognition/index.html"/><a href="https://www.tensorflow.org/versions/master/tutorials/image_recognition/index.html">https://www.tensorflow.org/versions/master/tutorials/image_recognition/index.html</a></span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">github: <a href="https://github.com/dmlc/mxnet-model-gallery/blob/master/imagenet-1k-inception-v3.md">https://github.com/dmlc/mxnet-model-gallery/blob/master/imagenet-1k-inception-v3.md</a></span></span></li>
+</ul>
+</li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Microsoft: Deep Residual Learning</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">PDF: <a href="http://research.microsoft.com/en-us/um/people/kahe/ilsvrc15/ilsvrc2015_deep_residual_learning_kaiminghe.pdf">http://research.microsoft.com/en-us/um/people/kahe/ilsvrc15/ilsvrc2015_deep_residual_learning_kaiminghe.pdf</a></span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div style="margin-left:40px;"><span style="font-size: 16px;"><span style="font-family: 微軟正黑體;"><br/></span></span></div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">2. Object category discovery in viedo</span></span></div>
+<div style="margin-left:40px;"><span style="font-size: 16px;"><span style="font-family: 微軟正黑體;"><br/></span></span></div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">3. Speech recognition</span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">Trend: LSTM, end-to-end</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">speech =&gt; acoustics =&gt; phonetics =&gt; language =&gt; text</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">feature extraction might decrease quality </span></span></li>
+</ul>
+</li>
+</ul>
+<div style="margin-left:40px;"><span style="font-size: 16px;"><span style="font-family: 微軟正黑體;"><br/></span></span></div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">4. Annotating images with text</span></span></div>
+<div style="margin-left:40px;"><span style="font-size: 16px;"><span style="font-family: 微軟正黑體;"><br/></span></span></div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">5. Pedestrian detection for self-driving cars</span></span></div>
+<div style="margin-left:40px;"><span style="font-size: 16px;"><span style="font-family: 微軟正黑體;"><br/></span></span></div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">6. OCR: reading text from images</span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">ex: Google recognize street number and sign text from Google Street View pic</span></span></li>
+</ul>
+</li>
+</ul>
+<div style="margin-left:40px;"><span style="font-size: 16px;"><span style="font-family: 微軟正黑體;"><br/></span></span></div>
+<div style="margin-left:40px;"><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">7. Machine translation</span></span></div>
+<ul>
+<li style="display:inline;list-style:none;">
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">sequence to sequence framework</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">encode: 看source資料，然後變成dense knowledge</span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">decode: 把knowledge decode成text</span></span></li>
+</ul>
+</li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">neural conversational model</span></span>
+<ul>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">簡介：<a href="http://arxiv.org/abs/1506.05869"/><a href="http://arxiv.org/abs/1506.05869">http://arxiv.org/abs/1506.05869</a></span></span></li>
+<li><span style="font-family: 微軟正黑體;"><span style="font-size: 16px;">PDF：<a href="http://arxiv.org/pdf/1506.05869v3.pdf"/><a href="http://arxiv.org/pdf/1506.05869v3.pdf">http://arxiv.org/pdf/1506.05869v3.pdf</a></span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div><br/></div>
+</body></html>
